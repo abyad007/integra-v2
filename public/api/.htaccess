@@ -1,0 +1,16 @@
+# Protect .env and log files from public access
+<Files ".env">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files "leads.log">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Allow only POST and OPTIONS on this endpoint
+<Files "submit-lead.php">
+    Order deny,allow
+    Allow from all
+</Files>

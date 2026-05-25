@@ -1,0 +1,44 @@
+# Integra Assurance — robots.txt
+# https://integra-assurance.com
+
+User-agent: *
+Allow: /
+
+# Block admin / espace client (sensitive)
+Disallow: /admin
+Disallow: /espace-client
+
+# Block API and internal Vite/TanStack paths
+Disallow: /api/
+Disallow: /_build/
+Disallow: /__vite_
+
+# Allow major crawlers explicitly
+User-agent: Googlebot
+Allow: /
+Disallow: /admin
+Disallow: /espace-client
+
+User-agent: Bingbot
+Allow: /
+Disallow: /admin
+Disallow: /espace-client
+
+# Block AI scrapers that don't credit / pay
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+# Sitemap
+Sitemap: https://integra-assurance.com/sitemap.xml

@@ -1,0 +1,253 @@
+/* ============================================================
+   MOTION LAYER — purely additive, no tokens, no global overrides
+   ============================================================ */
+
+@layer utilities {
+  /* ---------- Reveal direction variants (extend .reveal) ---------- */
+  .reveal[data-variant="fade"] {
+    transform: none;
+  }
+  .reveal[data-variant="scale"] {
+    transform: scale(0.985);
+    transform-origin: center;
+  }
+  .reveal[data-variant="left"] {
+    transform: translate3d(-18px, 0, 0);
+  }
+  .reveal[data-variant="right"] {
+    transform: translate3d(18px, 0, 0);
+  }
+  .reveal[data-variant="blur"] {
+    filter: blur(6px);
+  }
+  .reveal.is-visible[data-variant="blur"] {
+    filter: blur(0);
+  }
+  .reveal[data-variant="blur"] {
+    transition-property: opacity, transform, filter;
+  }
+
+  /* ---------- Pointer-driven 3D tilt (set by Tilt component) ---------- */
+  .tilt-3d {
+    transform-style: preserve-3d;
+    transform: perspective(1100px)
+               rotateX(var(--rx, 0deg))
+               rotateY(var(--ry, 0deg))
+               translateZ(0);
+    transition: transform 480ms cubic-bezier(0.2, 0.7, 0.15, 1);
+    will-change: transform;
+  }
+  .tilt-3d > * {
+    transform: translateZ(var(--tz, 0));
+  }
+
+  /* Soft glow that follows the pointer on tilt cards */
+  .tilt-glow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 380ms ease;
+    background: radial-gradient(
+      280px circle at var(--mx, 50%) var(--my, 50%),
+      color-mix(in oklab, var(--emerald) 14%, transparent),
+      transparent 65%
+    );
+  }
+  .tilt-3d:hover .tilt-glow { opacity: 1; }
+
+  /* ---------- Magnetic wrapper (set by Magnetic component) ---------- */
+  .magnetic {
+    display: inline-block;
+    transform: translate3d(var(--tx, 0), var(--ty, 0), 0);
+    transition: transform 360ms cubic-bezier(0.2, 0.7, 0.15, 1);
+    will-change: transform;
+  }
+
+  /* ---------- Scroll progress (thin top bar) ---------- */
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    z-index: 60;
+    pointer-events: none;
+    transform-origin: 0 50%;
+    transform: scaleX(var(--sp, 0));
+    background: linear-gradient(
+      90deg,
+      color-mix(in oklab, var(--emerald) 70%, transparent),
+      var(--emerald),
+      color-mix(in oklab, var(--emerald) 50%, transparent)
+    );
+    transition: opacity 400ms ease;
+  }
+
+  /* ---------- Subtle parallax driven by --sy (scroll px) ---------- */
+  .parallax-soft {
+    transform: translate3d(0, calc(var(--sy, 0) * -0.04px), 0);
+    will-change: transform;
+  }
+  .parallax-softer {
+    transform: translate3d(0, calc(var(--sy, 0) * -0.02px), 0);
+    will-change: transform;
+  }
+
+  /* ---------- Premium button micro-interactions ---------- */
+  .press {
+    transition:
+      transform 280ms cubic-bezier(0.2, 0.7, 0.15, 1),
+      box-shadow 280ms cubic-bezier(0.2, 0.7, 0.15, 1),
+      background-color 280ms ease;
+  }
+  .press:hover { transform: translateY(-1.5px); }
+  .press:active { transform: translateY(0) scale(0.985); }
+
+  /* Soft halo on hover for emerald accents */
+  .halo-emerald {
+    position: relative;
+    isolation: isolate;
+  }
+  .halo-emerald::before {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border-radius: inherit;
+    background: radial-gradient(60% 60% at 50% 50%,
+      color-mix(in oklab, var(--emerald) 22%, transparent),
+      transparent 70%);
+    opacity: 0;
+    transition: opacity 500ms ease;
+    z-index: -1;
+    filter: blur(12px);
+  }
+  .halo-emerald:hover::before { opacity: 1; }
+
+  /* Refined image breathing — extremely subtle */
+  .breathe {
+    animation: breathe 9s ease-in-out infinite;
+    will-change: transform;
+  }
+  @keyframes breathe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.012); }
+  }
+
+  /* Section fade-edge — premium transition between sections */
+  .section-fade-top {
+    position: relative;
+  }
+  .section-fade-top::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 80px;
+    background: linear-gradient(to bottom,
+      var(--background),
+      transparent);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* ---------- DEPTH LAYER — ambient atmosphere & premium polish ---------- */
+
+  /* Ambient orb — soft animated light source for hero/sections */
+  .ambient-orb {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(60px);
+    pointer-events: none;
+    opacity: 0.55;
+    will-change: transform, opacity;
+    animation: orb-drift 18s ease-in-out infinite;
+  }
+  .ambient-orb--slow { animation-duration: 26s; }
+  .ambient-orb--alt  { animation-direction: alternate-reverse; }
+
+  @keyframes orb-drift {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.5; }
+    50%      { transform: translate3d(2.5%, -2%, 0) scale(1.06); opacity: 0.65; }
+  }
+
+  /* Premium layered shadow — softer, multi-stop, near-natural light */
+  .shadow-premium {
+    box-shadow:
+      0 1px 0 0 color-mix(in oklab, var(--foreground) 4%, transparent) inset,
+      0 1px 2px -1px color-mix(in oklab, var(--foreground) 8%, transparent),
+      0 8px 18px -10px color-mix(in oklab, var(--foreground) 14%, transparent),
+      0 24px 48px -28px color-mix(in oklab, var(--foreground) 18%, transparent);
+    transition: box-shadow 520ms cubic-bezier(0.2, 0.7, 0.15, 1),
+                transform 520ms cubic-bezier(0.2, 0.7, 0.15, 1);
+  }
+  .shadow-premium:hover {
+    box-shadow:
+      0 1px 0 0 color-mix(in oklab, var(--foreground) 5%, transparent) inset,
+      0 2px 4px -1px color-mix(in oklab, var(--foreground) 10%, transparent),
+      0 16px 32px -14px color-mix(in oklab, var(--emerald) 18%, transparent),
+      0 36px 72px -32px color-mix(in oklab, var(--foreground) 24%, transparent);
+  }
+
+  /* Hairline luminous border — appears subtly on hover */
+  .hairline-glow {
+    position: relative;
+  }
+  .hairline-glow::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklab, var(--emerald) 35%, transparent),
+      transparent 40%,
+      transparent 60%,
+      color-mix(in oklab, var(--emerald) 20%, transparent)
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 520ms ease;
+    pointer-events: none;
+  }
+  .hairline-glow:hover::after { opacity: 1; }
+
+  /* Slow horizontal drift for floating chips */
+  .drift-x {
+    animation: drift-x 11s ease-in-out infinite;
+    will-change: transform;
+  }
+  .drift-x--alt { animation-duration: 14s; animation-direction: alternate-reverse; }
+  @keyframes drift-x {
+    0%, 100% { transform: translate3d(0, 0, 0); }
+    50%      { transform: translate3d(0, -6px, 0); }
+  }
+
+  /* Soft glass surface — for floating UI on busy backgrounds */
+  .glass-soft {
+    background: color-mix(in oklab, var(--surface, var(--background)) 78%, transparent);
+    backdrop-filter: blur(14px) saturate(1.05);
+    -webkit-backdrop-filter: blur(14px) saturate(1.05);
+  }
+
+  /* Reduced motion override */
+  @media (prefers-reduced-motion: reduce) {
+    .tilt-3d,
+    .magnetic,
+    .parallax-soft,
+    .parallax-softer,
+    .breathe,
+    .ambient-orb,
+    .drift-x {
+      transform: none !important;
+      animation: none !important;
+      transition: none !important;
+    }
+    .scroll-progress { display: none; }
+  }
+}
