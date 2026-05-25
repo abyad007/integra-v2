@@ -30,13 +30,13 @@ ssh -p 65002 root@<IP_DU_VPS>
 Puis exécute (copie-colle dans l'ordre) :
 
 ```bash
-# Installer Node.js 20 + git + rsync (si pas déjà là)
+# Installer Node.js 22 + git + rsync (si pas déjà là)
 apt update && apt install -y curl git rsync
-curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
 apt install -y nodejs
 
 # Vérifier
-node --version    # doit afficher v20.x
+node --version    # doit afficher v22.x (requis par Wrangler/Cloudflare)
 npm --version
 git --version
 rsync --version
