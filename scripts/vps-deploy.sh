@@ -69,12 +69,14 @@ else
     git reset --hard "$REMOTE_REV"
 fi
 
-# ── 2. Install deps (only if package-lock changed) ──────────
-if ! git diff --quiet "$LOCAL_REV" "$REMOTE_REV" -- package-lock.json bun.lock 2>/dev/null; then
-    log "2/4 — Lockfile changed, installing dependencies…"
-    npm ci --silent
+# ── 2. Install deps (only if package.json or lockfile changed) ──
+# Project uses bun.lock (not package-lock.json) so we use `npm install`
+# instead of `npm ci`. Works equivalently for our use case.
+if ! git diff --quiet "$LOCAL_REV" "$REMOTE_REV" -- package.json bun.lock package-lock.json 2>/dev/null; then
+    log "2/4 — package.json/lockfile changed, installing dependencies…"
+    npm install --no-audit --no-fund --silent
 else
-    log "2/4 — Lockfile unchanged, skipping npm install"
+    log "2/4 — Deps unchanged, skipping npm install"
 fi
 
 # ── 3. Build static site ────────────────────────────────────

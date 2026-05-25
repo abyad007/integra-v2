@@ -62,7 +62,7 @@ git clone https://github.com/<ton-org>/<ton-repo>.git integra-v2
 # git clone git@github.com:<ton-org>/<ton-repo>.git integra-v2
 
 cd integra-v2
-npm ci    # installe les dépendances (~3 min)
+npm install --no-audit --no-fund    # installe les dépendances (~3 min)
 ```
 
 > **Repo privé sur GitHub ?** Génère une SSH key pour le user deploy :
