@@ -61,9 +61,14 @@ LOCAL_REV=$(git rev-parse HEAD)
 REMOTE_REV=$(git rev-parse @{u})
 if [[ "$LOCAL_REV" == "$REMOTE_REV" ]]; then
     log "  Already up to date ($LOCAL_REV)"
-    # If you want to skip the build when nothing changed, uncomment:
-    # log "  Nothing to deploy — exiting"
-    # exit 0
+    # Skip the rebuild + redeploy when nothing changed on GitHub.
+    # Override with FORCE_BUILD=1 ./scripts/vps-deploy.sh to force a rebuild
+    # (useful when only WordPress content changed, since the script can't detect that).
+    if [[ "${FORCE_BUILD:-0}" != "1" ]]; then
+        log "  Nothing new to deploy — exiting (use FORCE_BUILD=1 to override)"
+        exit 0
+    fi
+    log "  FORCE_BUILD=1 — rebuilding anyway"
 else
     log "  Updating: $LOCAL_REV → $REMOTE_REV"
     git reset --hard "$REMOTE_REV"
