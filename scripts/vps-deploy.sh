@@ -45,6 +45,11 @@ source "$ENV_FILE"
 : "${SHARED_SSH_PORT:?SHARED_SSH_PORT not set in $ENV_FILE}"
 : "${SHARED_REMOTE_PATH:?SHARED_REMOTE_PATH not set in $ENV_FILE}"
 
+# Identity file for SSH to shared — defaults to ~/.ssh/integra_shared
+# Override in .integra-deploy.env with SHARED_SSH_KEY=<path>
+SHARED_SSH_KEY="${SHARED_SSH_KEY:-$HOME/.ssh/integra_shared}"
+[[ -f "$SHARED_SSH_KEY" ]] || fail "SSH key not found: $SHARED_SSH_KEY (generate it or set SHARED_SSH_KEY in $ENV_FILE)"
+
 [[ -d "$PROJECT_DIR" ]] || fail "Project dir not found: $PROJECT_DIR"
 cd "$PROJECT_DIR"
 [[ -f package.json ]] || fail "package.json not found in $PROJECT_DIR"
@@ -102,7 +107,7 @@ log "4/4 — Rsyncing to Hostinger shared ($SHARED_SSH_HOST:$SHARED_REMOTE_PATH)
 rsync -avz --delete \
     --exclude='api/.env' \
     --exclude='api/leads.log' \
-    -e "ssh -p $SHARED_SSH_PORT -o StrictHostKeyChecking=accept-new" \
+    -e "ssh -i $SHARED_SSH_KEY -p $SHARED_SSH_PORT -o StrictHostKeyChecking=accept-new -o IdentitiesOnly=yes" \
     "$PROJECT_DIR/dist-static/" \
     "$SHARED_SSH_USER@$SHARED_SSH_HOST:$SHARED_REMOTE_PATH/"
 
