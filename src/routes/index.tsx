@@ -11,13 +11,14 @@ import { Trust } from "@/components/site/sections/Trust";
 import { FAQ } from "@/components/site/sections/FAQ";
 import { CTA } from "@/components/site/sections/CTA";
 import { LatestPosts } from "@/components/site/sections/LatestPosts";
+import { StatsMarquee } from "@/components/site/sections/StatsMarquee";
 import { fetchPosts } from "@/lib/wp-api";
 
 export const Route = createFileRoute("/")({
   loader: async () => {
     // Best-effort fetch — if WP is down, render the home without latest posts
     try {
-      const { posts } = await fetchPosts({ perPage: 3 });
+      const { posts } = await fetchPosts({ perPage: 6 });
       return { latestPosts: posts };
     } catch {
       return { latestPosts: [] };
@@ -70,6 +71,7 @@ function HomePage() {
       <Header />
       <main className="pb-20 lg:pb-0">
         <Hero />
+        <StatsMarquee />
         <LogoCloud />
         <Services />
         <Pillars />

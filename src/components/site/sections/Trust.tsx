@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from "react";
-import { Star, Quote, ShieldCheck, BadgeCheck, Lock } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { Star, Quote, ShieldCheck, BadgeCheck, Lock, ChevronLeft, ChevronRight } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
 import { Reveal } from "@/components/site/Reveal";
 import { CountUp } from "@/components/site/CountUp";
 import avatarCamille from "@/assets/avatar-camille.webp";
@@ -27,6 +28,41 @@ const testimonials = [
     text: "Conseil clair, garanties expliquées sans jargon. Je me sens enfin couverte par quelqu'un qui défend mes intérêts.",
     rating: 5,
     avatar: avatarSophie,
+  },
+  {
+    name: "Lucas M.",
+    role: "Jeune conducteur · 22 ans",
+    text: "Mon premier contrat auto en jeune permis B, ils ont trouvé un tarif imbattable. Carte verte le jour même. Bravo l'équipe.",
+    rating: 5,
+    avatar: avatarMehdi,
+  },
+  {
+    name: "Aïcha N.",
+    role: "Habitation · Paris 11",
+    text: "Devis multirisque habitation comparé en 3 minutes. J'économise 280 €/an sur des garanties supérieures. Aucune comparaison avec mon ancien assureur.",
+    rating: 5,
+    avatar: avatarSophie,
+  },
+  {
+    name: "Jean-Marc L.",
+    role: "Artisan · Décennale BTP",
+    text: "Attestation décennale obtenue en 48 h alors que d'autres courtiers ne me répondaient même pas. Très professionnels, prix correct.",
+    rating: 5,
+    avatar: avatarMehdi,
+  },
+  {
+    name: "Élodie F.",
+    role: "VTC · Île-de-France",
+    text: "Première fois qu'un courtier comprend vraiment les besoins d'un chauffeur VTC. Garantie perte d'exploitation incluse, je dors tranquille.",
+    rating: 5,
+    avatar: avatarCamille,
+  },
+  {
+    name: "Karim B.",
+    role: "Mutuelle santé TNS",
+    text: "J'ai mis 6 mois à comprendre Madelin avec mon ancien courtier. Avec Integra, c'était clair en 10 minutes et j'économise 1 200 €/an.",
+    rating: 5,
+    avatar: avatarMehdi,
   },
 ];
 
@@ -129,11 +165,110 @@ export function Trust() {
           </dl>
         </Reveal>
 
-        {/* Testimonials */}
-        <div className="grid md:grid-cols-3 gap-5 lg:gap-6">
-          {testimonials.map((t, i) => (
-            <Reveal key={t.name} delay={120 + i * 80}>
-              <figure className="group relative h-full overflow-hidden rounded-2xl border border-border/70 bg-surface/90 backdrop-blur p-7 shadow-soft hover:shadow-premium hover:-translate-y-1 hover:border-emerald/40 transition-all duration-500">
+        {/* Testimonials slider — Embla horizontal, auto-rotate, navigation */}
+        <Reveal>
+          <TestimonialsSlider />
+        </Reveal>
+
+        {/* Compliance badges */}
+        <Reveal delay={300}>
+          <div className="mt-12 lg:mt-16 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-[11.5px] uppercase tracking-[0.16em] text-muted-foreground">
+            {badges.map((b) => {
+              const Icon = b.icon;
+              return (
+                <span key={b.label} className="inline-flex items-center gap-2">
+                  <Icon className="h-4 w-4 text-emerald" />
+                  {b.label}
+                </span>
+              );
+            })}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ════════════════════════════════════════════════════════════
+   TestimonialsSlider — Embla horizontal carousel
+   - 1 card on mobile, 2 on sm, 3 on lg
+   - Auto-rotate every 6s, paused on hover/touch
+   - Dots navigation + arrow buttons
+   ════════════════════════════════════════════════════════════ */
+function TestimonialsSlider() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    align: "start",
+    dragFree: false,
+    slidesToScroll: 1,
+  });
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+
+  const scrollTo = useCallback(
+    (index: number) => emblaApi?.scrollTo(index),
+    [emblaApi]
+  );
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    setScrollSnaps(emblaApi.scrollSnapList());
+    const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap());
+    emblaApi.on("select", onSelect);
+    onSelect();
+    return () => {
+      emblaApi.off("select", onSelect);
+    };
+  }, [emblaApi]);
+
+  // Auto-rotate every 6 sec, paused on hover/touch/reduced-motion
+  useEffect(() => {
+    if (!emblaApi) return;
+    if (typeof window === "undefined") return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let intervalId: number | undefined;
+    let paused = false;
+
+    const tick = () => {
+      if (!paused) emblaApi.scrollNext();
+    };
+    const start = () => {
+      window.clearInterval(intervalId);
+      intervalId = window.setInterval(tick, 6000);
+    };
+    const stop = () => window.clearInterval(intervalId);
+
+    const onPointerEnter = () => {
+      paused = true;
+    };
+    const onPointerLeave = () => {
+      paused = false;
+    };
+
+    start();
+    const node = emblaApi.rootNode();
+    node.addEventListener("pointerenter", onPointerEnter);
+    node.addEventListener("pointerleave", onPointerLeave);
+    return () => {
+      stop();
+      node.removeEventListener("pointerenter", onPointerEnter);
+      node.removeEventListener("pointerleave", onPointerLeave);
+    };
+  }, [emblaApi]);
+
+  return (
+    <div className="relative">
+      <div className="overflow-hidden -mx-2" ref={emblaRef}>
+        <div className="flex touch-pan-y cursor-grab active:cursor-grabbing">
+          {testimonials.map((t) => (
+            <div
+              key={t.name}
+              className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33.333%] px-2"
+            >
+              <figure className="group relative h-full overflow-hidden rounded-2xl border border-border/70 bg-surface/95 backdrop-blur p-7 shadow-soft hover:shadow-premium hover:-translate-y-1 hover:border-emerald/40 transition-all duration-500">
                 <Quote
                   aria-hidden="true"
                   className="absolute right-6 top-6 h-8 w-8 text-emerald/15 transition-transform duration-500 group-hover:scale-110"
@@ -143,7 +278,7 @@ export function Trust() {
                     <Star key={k} className="h-4 w-4 fill-emerald text-emerald" />
                   ))}
                 </div>
-                <blockquote className="mt-5 text-[15px] leading-relaxed text-foreground/90">
+                <blockquote className="mt-5 text-[15px] leading-relaxed text-foreground/90 min-h-[7rem]">
                   « {t.text} »
                 </blockquote>
                 <figcaption className="mt-6 pt-5 border-t border-border/60 flex items-center gap-3">
@@ -164,25 +299,47 @@ export function Trust() {
                   </div>
                 </figcaption>
               </figure>
-            </Reveal>
+            </div>
           ))}
         </div>
-
-        {/* Compliance badges */}
-        <Reveal delay={300}>
-          <div className="mt-12 lg:mt-16 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-[11.5px] uppercase tracking-[0.16em] text-muted-foreground">
-            {badges.map((b) => {
-              const Icon = b.icon;
-              return (
-                <span key={b.label} className="inline-flex items-center gap-2">
-                  <Icon className="h-4 w-4 text-emerald" />
-                  {b.label}
-                </span>
-              );
-            })}
-          </div>
-        </Reveal>
       </div>
-    </section>
+
+      {/* Navigation : dots + arrow buttons */}
+      <div className="mt-8 flex items-center justify-between gap-4">
+        <div className="flex items-center gap-2">
+          {scrollSnaps.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              aria-label={`Aller au témoignage ${i + 1}`}
+              onClick={() => scrollTo(i)}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                i === selectedIndex
+                  ? "w-8 bg-emerald"
+                  : "w-1.5 bg-border hover:bg-muted-foreground/50"
+              }`}
+            />
+          ))}
+        </div>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={scrollPrev}
+            aria-label="Témoignage précédent"
+            className="grid h-10 w-10 place-items-center rounded-full border border-border bg-surface hover:bg-accent hover:border-emerald/30 transition-all active:scale-95"
+          >
+            <ChevronLeft className="h-4 w-4" />
+          </button>
+          <button
+            type="button"
+            onClick={scrollNext}
+            aria-label="Témoignage suivant"
+            className="grid h-10 w-10 place-items-center rounded-full border border-border bg-surface hover:bg-accent hover:border-emerald/30 transition-all active:scale-95"
+          >
+            <ChevronRight className="h-4 w-4" />
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }

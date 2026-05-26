@@ -197,6 +197,7 @@ export function Header() {
               </Link>
               <a
                 href="#devis"
+                data-magnetic="true"
                 className="group relative inline-flex items-center gap-1.5 rounded-full bg-emerald px-5 py-2.5 text-sm font-semibold text-emerald-foreground shadow-soft hover:shadow-premium transition-all duration-300 hover:-translate-y-0.5 overflow-hidden"
               >
                 <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-[900ms] ease-out bg-gradient-to-r from-transparent via-white/25 to-transparent" />

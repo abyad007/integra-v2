@@ -175,18 +175,7 @@ export function Hero() {
                   >
                   <span className="text-[13px] sm:text-sm leading-tight min-w-0 truncate flex items-center gap-1.5">
                     <span className="text-muted-foreground">Devis</span>
-                    <AnimatePresence mode="wait" initial={false}>
-                      <motion.span
-                        key={selected}
-                        initial={{ opacity: 0, y: 6, filter: "blur(4px)" }}
-                        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                        exit={{ opacity: 0, y: -6, filter: "blur(4px)" }}
-                        transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-                        className="font-medium capitalize text-foreground"
-                      >
-                        {selected}
-                      </motion.span>
-                    </AnimatePresence>
+                    <MorphText value={selected} className="font-medium capitalize text-foreground" />
                     <span className="text-muted-foreground">· 2 min</span>
                   </span>
                   <span className="btn-shine relative inline-flex items-center gap-1.5 rounded-full bg-primary text-primary-foreground px-4 py-2 text-xs font-medium shadow-premium transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-[0_12px_28px_-12px_color-mix(in_oklab,var(--primary)_55%,transparent)] flex-shrink-0">
@@ -324,5 +313,59 @@ export function Hero() {
         </div>
       </div>
     </section>
+  );
+}
+
+/* ════════════════════════════════════════════════════════════
+   MorphText — character-by-character morph
+   Each char animates in with a tiny stagger for a premium feel
+   ════════════════════════════════════════════════════════════ */
+function MorphText({ value, className = "" }: { value: string; className?: string }) {
+  // Split into chars; AnimatePresence keys on `value` so the WHOLE string
+  // re-mounts when changed (clean transition from "auto" → "moto")
+  const chars = value.split("");
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      <motion.span
+        key={value}
+        className={`${className} inline-flex`}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        aria-label={value}
+      >
+        {chars.map((c, i) => (
+          <motion.span
+            key={`${value}-${i}-${c}`}
+            variants={{
+              hidden: { opacity: 0, y: 8, filter: "blur(6px)" },
+              visible: {
+                opacity: 1,
+                y: 0,
+                filter: "blur(0px)",
+                transition: {
+                  delay: i * 0.025,
+                  duration: 0.35,
+                  ease: [0.22, 1, 0.36, 1],
+                },
+              },
+              exit: {
+                opacity: 0,
+                y: -6,
+                filter: "blur(4px)",
+                transition: {
+                  delay: i * 0.012,
+                  duration: 0.22,
+                  ease: [0.22, 1, 0.36, 1],
+                },
+              },
+            }}
+            aria-hidden="true"
+          >
+            {c}
+          </motion.span>
+        ))}
+      </motion.span>
+    </AnimatePresence>
   );
 }

@@ -38,3 +38,5 @@ public/api/leads.log
 *.njsproj
 *.sln
 *.sw?
+
+dist-static.zip

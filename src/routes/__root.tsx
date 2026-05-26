@@ -18,6 +18,7 @@ import { SmoothScroll } from "@/components/site/SmoothScroll";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { CookieBanner } from "@/components/site/CookieBanner";
+import { MagneticCursor } from "@/components/site/MagneticCursor";
 import { ArrowRight, AlertTriangle } from "lucide-react";
 import { initAnalytics } from "@/lib/analytics";
 
@@ -153,6 +154,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <SmoothScroll />
+      <MagneticCursor />
       <Outlet />
       <CookieBanner />
     </QueryClientProvider>

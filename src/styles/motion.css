@@ -235,8 +235,26 @@
     -webkit-backdrop-filter: blur(14px) saturate(1.05);
   }
 
+  /* ---------- Stats marquee (infinite horizontal scroll) ---------- */
+  .stats-marquee-track {
+    animation: stats-marquee 38s linear infinite;
+    width: max-content;
+    will-change: transform;
+  }
+  @keyframes stats-marquee {
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(calc(-100% / 3), 0, 0); }
+  }
+  /* Pause on hover for accessibility */
+  .stats-marquee-track:hover {
+    animation-play-state: paused;
+  }
+
   /* Reduced motion override */
   @media (prefers-reduced-motion: reduce) {
+    .stats-marquee-track {
+      animation: none !important;
+    }
     .tilt-3d,
     .magnetic,
     .parallax-soft,

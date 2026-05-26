@@ -1,7 +1,7 @@
 import { useReducedMotion, motion, type Variants } from "framer-motion";
 import type { HTMLAttributes } from "react";
 
-type Variant = "up" | "fade" | "scale" | "left" | "right" | "blur";
+type Variant = "up" | "fade" | "scale" | "left" | "right" | "blur" | "premium";
 type Tag = "div" | "section" | "article" | "li" | "ul" | "ol";
 
 type Props = HTMLAttributes<HTMLElement> & {
@@ -18,16 +18,18 @@ const initialFor = (v: Variant) => {
     case "fade":
       return { opacity: 0 };
     case "scale":
-      return { opacity: 0, scale: 0.96 };
+      return { opacity: 0, scale: 0.96, filter: "blur(6px)" };
     case "left":
-      return { opacity: 0, x: -24 };
+      return { opacity: 0, x: -24, filter: "blur(4px)" };
     case "right":
-      return { opacity: 0, x: 24 };
+      return { opacity: 0, x: 24, filter: "blur(4px)" };
     case "blur":
       return { opacity: 0, filter: "blur(10px)" };
+    case "premium":
+      return { opacity: 0, y: 24, scale: 0.985, filter: "blur(8px)" };
     case "up":
     default:
-      return { opacity: 0, y: 18 };
+      return { opacity: 0, y: 18, filter: "blur(4px)" };
   }
 };
 
@@ -36,15 +38,17 @@ const animateTo = (v: Variant) => {
     case "fade":
       return { opacity: 1 };
     case "scale":
-      return { opacity: 1, scale: 1 };
+      return { opacity: 1, scale: 1, filter: "blur(0px)" };
     case "left":
     case "right":
-      return { opacity: 1, x: 0 };
+      return { opacity: 1, x: 0, filter: "blur(0px)" };
     case "blur":
       return { opacity: 1, filter: "blur(0px)" };
+    case "premium":
+      return { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" };
     case "up":
     default:
-      return { opacity: 1, y: 0 };
+      return { opacity: 1, y: 0, filter: "blur(0px)" };
   }
 };
 
