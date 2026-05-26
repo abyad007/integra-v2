@@ -56,7 +56,7 @@ export function Reveal({
   delay = 0,
   as = "div",
   variant = "up",
-  duration = 0.6,
+  duration = 0.45,
   className = "",
   style,
   children,
@@ -107,7 +107,7 @@ type GroupProps = HTMLAttributes<HTMLElement> & {
 
 export function RevealGroup({
   as = "div",
-  stagger = 0.08,
+  stagger = 0.05,
   delayChildren = 0,
   className = "",
   style,
@@ -160,7 +160,7 @@ type ItemProps = HTMLAttributes<HTMLElement> & {
 export function RevealItem({
   as = "div",
   variant = "up",
-  duration = 0.55,
+  duration = 0.4,
   className = "",
   style,
   children,

@@ -344,8 +344,8 @@ function MorphText({ value, className = "" }: { value: string; className?: strin
                 y: 0,
                 filter: "blur(0px)",
                 transition: {
-                  delay: i * 0.025,
-                  duration: 0.35,
+                  delay: i * 0.015,
+                  duration: 0.22,
                   ease: [0.22, 1, 0.36, 1],
                 },
               },
@@ -354,8 +354,8 @@ function MorphText({ value, className = "" }: { value: string; className?: strin
                 y: -6,
                 filter: "blur(4px)",
                 transition: {
-                  delay: i * 0.012,
-                  duration: 0.22,
+                  delay: i * 0.008,
+                  duration: 0.14,
                   ease: [0.22, 1, 0.36, 1],
                 },
               },

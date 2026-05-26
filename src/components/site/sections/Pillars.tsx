@@ -51,7 +51,7 @@ export function Pillars() {
           {pillars.map((p, i) => {
             const Icon = p.icon;
             return (
-              <Reveal key={p.n} delay={120 + i * 80}>
+              <Reveal key={p.n} delay={60 + i * 50}>
                 <article className="group relative h-full overflow-hidden rounded-3xl border border-border/70 bg-surface/95 backdrop-blur p-7 lg:p-8 shadow-soft hover:shadow-premium hover:-translate-y-1 hover:border-emerald/40 transition-all duration-500">
                   <span
                     aria-hidden="true"

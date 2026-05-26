@@ -280,7 +280,7 @@ function BlogPostPage() {
 
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
                 {related.map((p, i) => (
-                  <Reveal key={p.id} delay={80 + i * 60}>
+                  <Reveal key={p.id} delay={40 + i * 40}>
                     <BlogCard post={p} />
                   </Reveal>
                 ))}

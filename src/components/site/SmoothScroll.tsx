@@ -22,11 +22,11 @@ export function SmoothScroll() {
     if (isSmallTouch) return;
 
     const lenis = new Lenis({
-      duration: 1.05,
+      duration: 0.85,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 1.2,
+      wheelMultiplier: 1.1,
+      touchMultiplier: 1.4,
     });
 
     let rafId = 0;

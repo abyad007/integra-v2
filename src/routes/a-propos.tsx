@@ -316,7 +316,7 @@ function AboutPage() {
               {VALUES.map((v, i) => {
                 const Icon = v.icon;
                 return (
-                  <Reveal key={v.title} delay={80 + i * 80}>
+                  <Reveal key={v.title} delay={50 + i * 50}>
                     <article className="group relative h-full overflow-hidden rounded-3xl border border-border/70 bg-surface/95 backdrop-blur p-8 shadow-soft hover:shadow-premium hover:-translate-y-1 hover:border-emerald/40 transition-all duration-500">
                       <span
                         aria-hidden="true"
@@ -356,7 +356,7 @@ function AboutPage() {
               {CREDENTIALS.map((c, i) => {
                 const Icon = c.icon;
                 return (
-                  <Reveal key={c.label} delay={80 + i * 60}>
+                  <Reveal key={c.label} delay={40 + i * 40}>
                     <div className="relative h-full overflow-hidden rounded-2xl border border-border/70 bg-surface/95 backdrop-blur p-5 shadow-soft">
                       <div className="flex items-start gap-3">
                         <span className="grid h-10 w-10 place-items-center rounded-xl bg-emerald/10 text-emerald border border-emerald/15 flex-shrink-0">

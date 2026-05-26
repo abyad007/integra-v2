@@ -237,7 +237,7 @@ function TestimonialsSlider() {
     };
     const start = () => {
       window.clearInterval(intervalId);
-      intervalId = window.setInterval(tick, 6000);
+      intervalId = window.setInterval(tick, 5000);
     };
     const stop = () => window.clearInterval(intervalId);
 
