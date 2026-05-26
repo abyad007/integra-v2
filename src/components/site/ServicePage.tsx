@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Check, ArrowRight, ArrowLeft, type LucideIcon } from "lucide-react";
+import { Check, ArrowRight, ArrowLeft, HelpCircle, type LucideIcon } from "lucide-react";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
@@ -7,6 +7,12 @@ import { ScrollProgress } from "@/components/site/ScrollProgress";
 import { CTA } from "@/components/site/sections/CTA";
 import { Trust } from "@/components/site/sections/Trust";
 import { QuoteFunnel } from "@/components/site/QuoteFunnel";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export type ServiceProfile = {
   icon: LucideIcon;
@@ -43,6 +49,8 @@ export type ServicePageProps = {
   profilesPivot: string;
   /** 3 profile cards */
   profiles: ServiceProfile[];
+  /** Optional FAQ items specific to this service (3-6 questions). When omitted, no FAQ section renders. */
+  faqs?: Array<{ q: string; a: string }>;
 };
 
 export function ServicePage(p: ServicePageProps) {
@@ -93,7 +101,10 @@ export function ServicePage(p: ServicePageProps) {
                 <Reveal delay={320}>
                   <div className="mt-8 flex flex-wrap gap-4 items-center">
                     <QuoteFunnel defaultType={p.defaultType}>
-                      <button className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-sm font-medium text-primary-foreground shadow-elev hover:shadow-premium hover:-translate-y-0.5 transition-all">
+                      <button
+                        data-magnetic="true"
+                        className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-sm font-medium text-primary-foreground shadow-elev hover:shadow-premium hover:-translate-y-0.5 transition-all"
+                      >
                         {p.ctaLabel}
                         <ArrowRight className="h-4 w-4" />
                       </button>
@@ -164,6 +175,44 @@ export function ServicePage(p: ServicePageProps) {
             </div>
           </div>
         </section>
+
+        {/* FAQ spécifique service — n'apparaît que si faqs fournies */}
+        {p.faqs && p.faqs.length > 0 && (
+          <section className="py-20 lg:py-32 relative border-t border-border/60">
+            <div className="absolute inset-0 bg-noise opacity-50 pointer-events-none" />
+            <div className="mx-auto max-w-4xl px-5 lg:px-8 relative">
+              <Reveal className="text-center mb-12 lg:mb-16 max-w-2xl mx-auto">
+                <div className="inline-flex items-center gap-2 rounded-full border border-emerald/20 bg-emerald/10 px-3 py-1 text-[11px] uppercase tracking-wider font-medium text-emerald mb-6 shadow-soft">
+                  <HelpCircle className="h-3.5 w-3.5" />
+                  Vos questions
+                </div>
+                <h2 className="font-display text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.05] tracking-[-0.025em] text-balance">
+                  Tout ce qu'il faut savoir
+                  <br />
+                  <span className="text-gradient-emerald">avant de souscrire.</span>
+                </h2>
+              </Reveal>
+              <Reveal>
+                <Accordion type="single" collapsible className="w-full space-y-3">
+                  {p.faqs.map((faq, i) => (
+                    <AccordionItem
+                      key={i}
+                      value={`item-${i}`}
+                      className="rounded-2xl border border-border bg-surface/95 backdrop-blur shadow-soft hover:border-emerald/40 transition-colors duration-300 px-5 sm:px-6 data-[state=open]:border-emerald/40"
+                    >
+                      <AccordionTrigger className="font-display text-base sm:text-[17px] tracking-[-0.01em] py-5 text-left hover:no-underline">
+                        {faq.q}
+                      </AccordionTrigger>
+                      <AccordionContent className="pb-5 text-[14.5px] text-muted-foreground leading-relaxed">
+                        {faq.a}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </Reveal>
+            </div>
+          </section>
+        )}
 
         {/* Réutilisation des blocs globaux */}
         <Trust />

@@ -126,6 +126,7 @@ export function CTA() {
                     <Magnetic strength={0.22}>
                       <QuoteFunnel>
                         <button
+                          data-magnetic="true"
                           className="group relative inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-6 sm:px-7 py-3.5 sm:py-4 text-sm font-medium shadow-elev hover:shadow-premium transition-all duration-300 hover:-translate-y-0.5 overflow-hidden"
                         >
                         {/* shine sweep */}

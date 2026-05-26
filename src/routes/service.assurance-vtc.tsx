@@ -50,6 +50,28 @@ function VtcPage() {
           desc: "Berlines premium, vans VIP : garanties haut de gamme avec valeur à neuf 36 mois et véhicule de remplacement.",
         },
       ]}
+      faqs={[
+        {
+          q: "Toutes les plateformes (Uber, Bolt, Heetch, Marcel) sont-elles couvertes ?",
+          a: "Oui sur nos contrats. La condition : tu déclares dès la souscription les plateformes sur lesquelles tu travailles. Si tu en ajoutes une nouvelle plus tard, simple avenant en 24 h. Refus = ces plateformes ont des historiques de sinistres trop élevés pour l'assureur (rare).",
+        },
+        {
+          q: "Perte d'exploitation — c'est combien d'indemnité par jour ?",
+          a: "50 à 150 €/jour selon la formule, pendant la durée d'immobilisation (max 60 jours en standard, 120 jours en Premium). Vital si tu travailles à temps plein : un sinistre de 3 semaines = 3 000 €/4 500 € de revenu protégé.",
+        },
+        {
+          q: "Mon véhicule a moins de 3 ans — valeur à neuf en cas de vol/destruction ?",
+          a: "Oui, garantie \"valeur à neuf 36 mois\" sur nos formules Confort et Premium. En cas de destruction totale ou vol non-retrouvé, on te rembourse le prix d'achat initial (pas la cote Argus). Écart possible : plusieurs milliers d'euros sur une berline récente.",
+        },
+        {
+          q: "Mon équipement (GPS pro, tablette, sièges enfants) est couvert ?",
+          a: "Oui via la garantie \"équipement professionnel\", incluse en Premium ou en option (~50 €/an). Plafond standard : 2 000 €. Pour les chauffeurs VTC haut de gamme avec équipement étendu (chargeurs Apple/Android, rafraîchissements, accessoires), on monte jusqu'à 5 000 €.",
+        },
+        {
+          q: "Véhicule de remplacement — combien de jours, et même catégorie ?",
+          a: "7 à 30 jours selon la formule. La catégorie dépend du contrat : standard = compacte/citadine, Premium = catégorie identique (donc berline si tu as une berline). Pour un chauffeur VTC premium, la catégorie identique est non-négociable, sinon tu perds tes clients haut de gamme pendant l'immobilisation.",
+        },
+      ]}
     />
   );
 }

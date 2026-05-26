@@ -50,6 +50,28 @@ function PrevoyancePage() {
           desc: "Capital versé à vos bénéficiaires + rente éducation pour les enfants. Garantie obsèques en option.",
         },
       ]}
+      faqs={[
+        {
+          q: "Quelle est la différence entre prévoyance et mutuelle santé ?",
+          a: "La mutuelle rembourse tes soins (consultations, lunettes, hospi). La prévoyance maintient ton REVENU si tu es en arrêt de travail, invalide ou décédé. Les 2 sont complémentaires et indépendantes — l'une ne remplace pas l'autre.",
+        },
+        {
+          q: "Délai de franchise — au bout de combien de jours d'arrêt je suis indemnisé ?",
+          a: "Standard : 3 à 30 jours selon le niveau de garanties choisi. Plus la franchise est courte, plus la cotisation est élevée. Pour un salarié, 7 jours est un bon équilibre (la sécu prend le relais du jour 4). Pour un TNS, 3 jours est conseillé.",
+        },
+        {
+          q: "Si je décède, mes proches reçoivent combien et sous quel délai ?",
+          a: "Le capital est défini à la souscription (souvent 1× à 3× ton salaire annuel). Versement aux bénéficiaires sous 30 jours après réception du certificat de décès. Pas de droits de succession dans la limite des plafonds légaux.",
+        },
+        {
+          q: "Loi Madelin pour TNS : la prévoyance est aussi déductible ?",
+          a: "Oui, dans une enveloppe spécifique : 1,75 % du PASS + 3,75 % du revenu professionnel, plafonné à 3 % de 8 PASS (~3 480 €/an déductibles en 2026). Au TMI 41 %, une cotisation prévoyance de 1 500 €/an te fait économiser 615 € d'impôts.",
+        },
+        {
+          q: "Je suis en bonne santé — j'ai besoin d'un examen médical pour souscrire ?",
+          a: "Pour les capitaux inférieurs à 200 000 € et l'IJ standard, un simple questionnaire de santé suffit (10 min, en ligne). Au-delà, examen médical avec analyses sanguines + ECG. Nos partenaires acceptent les profils avec antécédents (ALD, surpoids) — on étudie au cas par cas.",
+        },
+      ]}
     />
   );
 }

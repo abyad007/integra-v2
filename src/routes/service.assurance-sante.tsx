@@ -50,6 +50,28 @@ function SantePage() {
           desc: "Loi Madelin déductible du revenu imposable. Couverture étendue + indemnités journalières en option.",
         },
       ]}
+      faqs={[
+        {
+          q: "Il y a un délai de carence avant que je sois couvert ?",
+          a: "Sur nos contrats : aucun délai pour les soins courants (médecin, pharmacie, optique). 3 mois pour le dentaire et l'hospitalisation programmée. 9 mois pour la maternité. Hospitalisation d'urgence : couverte dès le 1er jour.",
+        },
+        {
+          q: "Je suis TNS — est-ce que la mutuelle Madelin réduit vraiment mes impôts ?",
+          a: "Oui. Tes cotisations santé Madelin sont déductibles de ton revenu imposable, dans la limite de ~11 100 €/an (3 % de 8 PASS). Au TMI 30 %, une mutuelle à 1 800 €/an te coûte réellement 1 260 €. Économie de 540 €/an. Plus le TMI est haut, plus tu gagnes.",
+        },
+        {
+          q: "Optique : je peux choisir mes lunettes hors panier 100 % santé ?",
+          a: "Oui. Le panier 100 % santé est obligatoire mais limité à des montures basiques (~30 €). Pour tes vraies lunettes, le remboursement dépend du niveau (Premium = jusqu'à 400 €/équipement tous les 2 ans). On t'explique le détail avant souscription.",
+        },
+        {
+          q: "Hospitalisation — chambre individuelle remboursée ?",
+          a: "Oui sur toutes nos formules à partir du niveau Confort. Forfait journalier hospitalier (20 €/jour) remboursé à 100 % par toutes les complémentaires (obligation légale). La chambre individuelle (60-90 €/jour selon clinique) est l'option qui varie le plus entre formules.",
+        },
+        {
+          q: "Je voyage à l'étranger — couvert ?",
+          a: "Soins urgents à l'étranger : oui, remboursés au tarif sécurité sociale française (souvent ridicule hors UE). Pour les vrais voyages, on recommande d'ajouter une assurance voyage temporaire (Mondial Assistance, ACS) qui couvre les frais réels jusqu'à 200 000 €. Tarif : 1-2 €/jour.",
+        },
+      ]}
     />
   );
 }

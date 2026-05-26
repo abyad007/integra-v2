@@ -50,6 +50,28 @@ function MotoPage() {
           desc: "Trajets domicile-travail, livraisons, déplacements urbains : formules économiques avec assistance 0 km incluse.",
         },
       ]}
+      faqs={[
+        {
+          q: "Permis A2 (bridé) accepté ? Avec une moto débridable ?",
+          a: "Oui, nos partenaires acceptent les permis A2 dès le 1er jour. Pour une moto débridable (Yamaha MT-07, Honda CB650R…), tu déclares la version bridée au moment du contrat — quand tu passeras au permis A complet, on met à jour la déclaration en 1 clic.",
+        },
+        {
+          q: "Mon équipement (casque, blouson, gants) est-il couvert en cas d'accident ?",
+          a: "Oui via la garantie \"équipement du pilote\" : casque, blouson, pantalon, gants, bottes sont indemnisés jusqu'à 1 500-3 000 € selon la formule choisie. Option non-systématique chez les assureurs classiques, on l'inclut par défaut sur les formules Confort et Premium.",
+        },
+        {
+          q: "Garantie vol — quelles conditions ?",
+          a: "Vol couvert si stationnement avec antivol homologué SRA (\"U\" ou chaîne) — obligatoire dès qu'on assure tous risques. Vol au domicile : couvert sans condition d'antivol dans la majorité des contrats. Garage privé fermé = franchise réduite.",
+        },
+        {
+          q: "Je conduis ma moto seulement 6 mois par an, je peux suspendre l'assurance ?",
+          a: "Oui via une formule \"hivernage\" : tu paies une cotisation réduite pendant la période d'arrêt (la RC obligatoire reste active car la moto reste un véhicule terrestre à moteur). Économies de 30-50 % sur la prime annuelle.",
+        },
+        {
+          q: "Grosse cylindrée (>600cc) ou sportive — surprime ?",
+          a: "Pas systématiquement. Le tarif dépend de la puissance fiscale et de la valeur, pas uniquement de la cylindrée. Un roadster naked premium est souvent moins cher à assurer qu'une hypersport. On compare et on te trouve le meilleur compromis.",
+        },
+      ]}
     />
   );
 }
