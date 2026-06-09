@@ -268,7 +268,7 @@ function TestimonialsSlider() {
               key={t.name}
               className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33.333%] px-2"
             >
-              <figure className="group relative h-full overflow-hidden rounded-2xl border border-border/70 bg-surface/95 backdrop-blur p-7 shadow-soft hover:shadow-premium hover:-translate-y-1 hover:border-emerald/40 transition-all duration-500">
+              <figure className="group relative h-full overflow-hidden rounded-2xl border border-border/70 bg-surface p-7 shadow-soft hover:shadow-card hover:-translate-y-0.5 hover:border-emerald/30 transition-all duration-400">
                 <Quote
                   aria-hidden="true"
                   className="absolute right-6 top-6 h-8 w-8 text-emerald/15 transition-transform duration-500 group-hover:scale-110"

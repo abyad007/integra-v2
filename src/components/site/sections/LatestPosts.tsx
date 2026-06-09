@@ -24,7 +24,7 @@ export function LatestPosts({ posts }: { posts: WpPost[] }) {
               <BookOpen className="h-3 w-3" />
               Blog
             </p>
-            <h2 className="mt-4 font-display text-[clamp(2.25rem,5vw,4rem)] leading-[1.04] text-balance tracking-[-0.03em]">
+            <h2 className="mt-4 page-title">
               Décryptages, guides
               <br />
               <span className="text-gradient-emerald">& bonnes pratiques.</span>
@@ -37,7 +37,7 @@ export function LatestPosts({ posts }: { posts: WpPost[] }) {
             </p>
             <Link
               to="/blog"
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-foreground text-background px-5 py-2.5 text-sm font-medium hover:opacity-90 transition-all"
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-navy text-white px-5 py-2.5 text-sm font-medium hover:opacity-90 transition-all"
             >
               Tous les articles
               <ArrowRight className="h-4 w-4" />

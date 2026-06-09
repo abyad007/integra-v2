@@ -60,7 +60,7 @@ function LoginPage() {
         <div className="w-full max-w-sm mx-auto">
           <Reveal delay={100}>
             <div className="mb-8">
-              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-primary text-primary-foreground shadow-soft mb-6">
+              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-navy text-white shadow-soft mb-6">
                 <KeyRound className="h-6 w-6" />
               </span>
               <h1 className="font-display text-3xl sm:text-4xl tracking-tight mb-2">Bienvenue.</h1>
@@ -130,17 +130,17 @@ function LoginPage() {
       </div>
 
       {/* Right side: Editorial (Desktop only) */}
-      <div className="hidden lg:flex flex-1 relative bg-primary text-primary-foreground overflow-hidden items-center justify-center p-12">
-        <div className="absolute inset-0 bg-noise opacity-20 pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_0%,rgba(255,255,255,0.08),transparent)] pointer-events-none" />
+      <div className="hidden lg:flex flex-1 relative bg-navy text-white overflow-hidden items-center justify-center p-12">
+        <div className="absolute inset-0 bg-grid-dark opacity-30 pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_0%,rgba(255,255,255,0.06),transparent)] pointer-events-none" />
         
         <div className="max-w-md relative z-10">
           <Reveal delay={300} variant="scale">
-            <div className="grid h-16 w-16 place-items-center rounded-2xl bg-white/12 text-primary-foreground mb-8 backdrop-blur-sm border border-white/15 shadow-2xl">
+            <div className="grid h-16 w-16 place-items-center rounded-2xl bg-white/10 text-white mb-8 border border-white/15 shadow-soft">
               <ShieldCheck className="h-8 w-8" />
             </div>
-            <h2 className="font-display text-4xl leading-tight mb-4 tracking-tight">Vos documents <br/><span className="text-primary-foreground/85">à portée de main.</span></h2>
-            <p className="text-primary-foreground/70 leading-relaxed text-lg">
+            <h2 className="font-display text-4xl leading-tight mb-4 tracking-tight">Vos documents <br/><span className="text-white/80 italic">à portée de main.</span></h2>
+            <p className="text-white/65 leading-relaxed text-lg">
               Téléchargez votre carte verte, modifiez vos garanties ou déclarez un sinistre en quelques clics, 24h/24 et 7j/7.
             </p>
           </Reveal>

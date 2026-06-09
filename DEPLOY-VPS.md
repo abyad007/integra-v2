@@ -170,7 +170,7 @@ Le site doit être live sur `https://integra-assurance.com/` immédiatement (rsy
 
 ---
 
-## Étape 6 — Configurer api/.env sur le shared (one-time, pour Resend)
+## Étape 6 — Configurer api/.env sur le shared (one-time, SMTP Hostinger)
 
 ⚠ Le rsync **exclut volontairement** `api/.env` pour ne jamais écraser la prod par accident. Tu dois le créer une fois manuellement sur le shared :
 
@@ -183,8 +183,11 @@ cd domains/integra-assurance.com/public_html/api
 
 # Créer le .env
 cat > .env <<'EOF'
-RESEND_API_KEY=re_xxxxxxxxxxxxxxxxx
-RESEND_FROM_EMAIL=Integra Assurance <devis@integra-assurance.com>
+SMTP_HOST=smtp.hostinger.com
+SMTP_PORT=465
+SMTP_USER=devis@integra-assurance.com
+SMTP_PASS=<mot de passe de la boîte email>
+SMTP_FROM_NAME=Integra Assurance
 LEAD_NOTIFICATION_EMAIL=integra.cc@outlook.com
 EOF
 

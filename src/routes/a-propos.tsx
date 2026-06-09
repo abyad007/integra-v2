@@ -123,11 +123,8 @@ function AboutPage() {
       <Header />
       <main>
         {/* ════════════ HERO — split layout ════════════ */}
-        <section className="relative pt-16 pb-12 lg:pt-24 lg:pb-20 overflow-hidden border-b border-border/60">
-          <div className="absolute inset-0 pointer-events-none [mask-image:radial-gradient(ellipse_60%_55%_at_50%_30%,black,transparent)]">
-            <div className="absolute inset-0 bg-grid opacity-[0.18]" />
-          </div>
-          <div className="absolute inset-0 bg-noise opacity-[0.04] pointer-events-none" />
+        <section className="page-hero relative pt-16 pb-12 lg:pt-24 lg:pb-20">
+          <div className="absolute inset-0 bg-grid opacity-[0.15] pointer-events-none [mask-image:radial-gradient(ellipse_70%_60%_at_50%_30%,black,transparent)]" />
 
           <div className="mx-auto max-w-7xl px-5 lg:px-8 relative">
             <Reveal>
@@ -149,7 +146,7 @@ function AboutPage() {
                   </div>
                 </Reveal>
                 <Reveal delay={140}>
-                  <h1 className="font-display text-[clamp(2.5rem,6vw,4.5rem)] tracking-[-0.03em] leading-[1.05] text-balance">
+                  <h1 className="page-title">
                     Un courtier
                     <br />
                     <span className="text-gradient-emerald">qui défend vraiment</span>
@@ -187,7 +184,6 @@ function AboutPage() {
               {/* Right column intentionally empty on desktop (founder portrait is in dedicated section below) */}
               <Reveal delay={200} className="lg:col-span-5 hidden lg:block">
                 <div className="relative">
-                  <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-emerald/15 via-transparent to-navy/10 blur-2xl opacity-70" />
                   <div className="relative grid grid-cols-2 gap-3 text-center">
                     {[
                       { v: 12500, suffix: "+", label: "Dossiers traités" },
@@ -197,7 +193,7 @@ function AboutPage() {
                     ].map((s) => (
                       <div
                         key={s.label}
-                        className="rounded-2xl border border-border/70 bg-surface/95 backdrop-blur px-5 py-6 shadow-soft"
+                        className="rounded-xl border border-border/70 bg-surface px-5 py-6 shadow-soft"
                       >
                         <dt className="font-display text-[2rem] tracking-[-0.03em] leading-none tabular-nums">
                           <CountUp value={s.v} suffix={s.suffix} />
@@ -221,8 +217,7 @@ function AboutPage() {
             <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
               <Reveal className="lg:col-span-5">
                 <div className="relative">
-                  <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-emerald/20 via-transparent to-navy/10 blur-2xl opacity-60" />
-                  <div className="relative overflow-hidden rounded-[1.75rem] ring-frame border border-border/40 bg-surface shadow-premium aspect-[3/4] lg:aspect-[4/5]">
+                  <div className="relative overflow-hidden rounded-2xl border border-border/60 bg-surface shadow-card aspect-[3/4] lg:aspect-[4/5]">
                     <img
                       src={founderImg}
                       alt="Ilyass Zerouali, fondateur d'Integra Assurance"
@@ -235,7 +230,7 @@ function AboutPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-foreground/15 via-transparent to-transparent" />
                   </div>
                   {/* Floating ORIAS chip */}
-                  <div className="hidden lg:flex absolute -right-4 bottom-8 items-center gap-3 rounded-2xl glass-soft px-4 py-3 shadow-premium border border-border/60">
+                  <div className="hidden lg:flex absolute -right-4 bottom-8 items-center gap-3 rounded-xl bg-surface border border-border/60 px-4 py-3 shadow-soft">
                     <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-emerald/12 text-emerald">
                       <ShieldCheck className="h-4 w-4" />
                     </span>
@@ -281,7 +276,7 @@ function AboutPage() {
                 <div className="mt-8 flex flex-wrap gap-3">
                   <a
                     href="tel:+33187663942"
-                    className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3 text-sm font-semibold shadow-elev hover:shadow-premium hover:-translate-y-0.5 transition-all"
+                    className="inline-flex items-center gap-2 rounded-full bg-emerald text-white px-6 py-3 text-sm font-semibold shadow-elev hover:shadow-card hover:-translate-y-0.5 transition-all"
                   >
                     <Phone className="h-4 w-4" />
                     Parler à Ilyass
@@ -317,12 +312,7 @@ function AboutPage() {
                 const Icon = v.icon;
                 return (
                   <Reveal key={v.title} delay={50 + i * 50}>
-                    <article className="group relative h-full overflow-hidden rounded-3xl border border-border/70 bg-surface/95 backdrop-blur p-8 shadow-soft hover:shadow-premium hover:-translate-y-1 hover:border-emerald/40 transition-all duration-500">
-                      <span
-                        aria-hidden="true"
-                        className="pointer-events-none absolute inset-x-0 -top-px h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                        style={{ background: "linear-gradient(90deg, transparent, color-mix(in oklab, var(--emerald) 70%, transparent), transparent)" }}
-                      />
+                    <article className="group relative h-full overflow-hidden rounded-2xl border border-border/70 bg-surface p-8 shadow-soft hover:shadow-card hover:-translate-y-0.5 hover:border-emerald/30 transition-all duration-400">
                       <span className="grid h-12 w-12 place-items-center rounded-2xl bg-emerald/10 text-emerald border border-emerald/15 mb-6 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3">
                         <Icon className="h-5 w-5" strokeWidth={1.6} />
                       </span>
@@ -357,7 +347,7 @@ function AboutPage() {
                 const Icon = c.icon;
                 return (
                   <Reveal key={c.label} delay={40 + i * 40}>
-                    <div className="relative h-full overflow-hidden rounded-2xl border border-border/70 bg-surface/95 backdrop-blur p-5 shadow-soft">
+                    <div className="relative h-full overflow-hidden rounded-2xl border border-border/70 bg-surface p-5 shadow-soft">
                       <div className="flex items-start gap-3">
                         <span className="grid h-10 w-10 place-items-center rounded-xl bg-emerald/10 text-emerald border border-emerald/15 flex-shrink-0">
                           <Icon className="h-4 w-4" strokeWidth={1.8} />

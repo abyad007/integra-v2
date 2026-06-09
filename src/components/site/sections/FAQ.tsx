@@ -57,7 +57,7 @@ export function FAQ() {
         </Reveal>
 
         <Reveal delay={120}>
-          <div className="mt-12 lg:mt-16 rounded-3xl border border-border/70 bg-surface/95 backdrop-blur shadow-soft overflow-hidden">
+          <div className="mt-12 lg:mt-16 rounded-2xl border border-border/70 bg-surface shadow-soft overflow-hidden">
             <Accordion type="single" collapsible className="w-full">
               {faqs.map((item, i) => (
                 <AccordionItem
@@ -90,7 +90,7 @@ export function FAQ() {
             <div className="flex flex-wrap gap-3">
               <a
                 href="tel:+33187663942"
-                className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-3 text-sm font-medium shadow-soft hover:shadow-premium hover:-translate-y-0.5 transition-all"
+                className="inline-flex items-center gap-2 rounded-full bg-emerald text-white px-5 py-3 text-sm font-medium shadow-soft hover:shadow-card hover:-translate-y-0.5 transition-all"
               >
                 <Phone className="h-4 w-4" />
                 01 87 66 39 42

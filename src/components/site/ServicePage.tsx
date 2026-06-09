@@ -61,12 +61,8 @@ export function ServicePage(p: ServicePageProps) {
       <Header />
       <main>
         {/* Hero — 2 columns: copy left, 3D illustration right */}
-        <section className="relative pt-16 pb-16 lg:pt-24 lg:pb-24 overflow-hidden border-b border-border/60">
-          <div className="absolute inset-0 bg-noise opacity-[0.04] pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-b from-emerald/[0.04] to-transparent pointer-events-none" />
-          <div className="absolute inset-0 pointer-events-none [mask-image:radial-gradient(ellipse_60%_55%_at_50%_25%,black,transparent)]">
-            <div className="absolute inset-0 bg-grid opacity-[0.18]" />
-          </div>
+        <section className="page-hero relative pt-16 pb-16 lg:pt-24 lg:pb-24">
+          <div className="absolute inset-0 bg-grid opacity-[0.15] pointer-events-none [mask-image:radial-gradient(ellipse_70%_60%_at_50%_30%,black,transparent)]" />
 
           <div className="mx-auto max-w-7xl px-5 lg:px-8 relative">
             <Reveal>
@@ -88,7 +84,7 @@ export function ServicePage(p: ServicePageProps) {
                   </div>
                 </Reveal>
                 <Reveal delay={160}>
-                  <h1 className="font-display text-[clamp(2.25rem,5.5vw,4rem)] leading-[1.05] tracking-tight text-balance">
+                  <h1 className="page-title">
                     {p.title}{" "}
                     <span className="text-gradient-emerald">{p.titlePivot}</span>
                   </h1>
@@ -103,7 +99,7 @@ export function ServicePage(p: ServicePageProps) {
                     <QuoteFunnel defaultType={p.defaultType}>
                       <button
                         data-magnetic="true"
-                        className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-sm font-medium text-primary-foreground shadow-elev hover:shadow-premium hover:-translate-y-0.5 transition-all"
+                        className="btn-primary px-7 py-4"
                       >
                         {p.ctaLabel}
                         <ArrowRight className="h-4 w-4" />
@@ -124,7 +120,7 @@ export function ServicePage(p: ServicePageProps) {
               </div>
 
               <Reveal delay={200} className="lg:col-span-6">
-                <div className="relative aspect-[3/2] overflow-hidden rounded-[1.75rem] ring-frame border border-border/40 bg-surface shadow-premium">
+                <div className="relative aspect-[3/2] overflow-hidden rounded-2xl border border-border/60 bg-surface shadow-card">
                   <img
                     src={p.heroImage}
                     alt={p.heroAlt}
@@ -159,7 +155,7 @@ export function ServicePage(p: ServicePageProps) {
                   <Reveal
                     key={prof.title}
                     delay={100 + i * 100}
-                    className="relative rounded-3xl border border-border bg-background p-8 shadow-soft hover:shadow-premium hover:-translate-y-1 hover:border-emerald/30 transition-all duration-500 overflow-hidden group"
+                    className="relative rounded-2xl border border-border/70 bg-surface p-7 shadow-soft hover:shadow-card hover:-translate-y-0.5 hover:border-emerald/25 transition-all duration-400 overflow-hidden group"
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-emerald/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <div className="relative">
@@ -198,7 +194,7 @@ export function ServicePage(p: ServicePageProps) {
                     <AccordionItem
                       key={i}
                       value={`item-${i}`}
-                      className="rounded-2xl border border-border bg-surface/95 backdrop-blur shadow-soft hover:border-emerald/40 transition-colors duration-300 px-5 sm:px-6 data-[state=open]:border-emerald/40"
+                      className="rounded-2xl border border-border bg-surface shadow-soft hover:border-emerald/40 transition-colors duration-300 px-5 sm:px-6 data-[state=open]:border-emerald/40"
                     >
                       <AccordionTrigger className="font-display text-base sm:text-[17px] tracking-[-0.01em] py-5 text-left hover:no-underline">
                         {faq.q}

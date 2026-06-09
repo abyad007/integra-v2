@@ -98,7 +98,7 @@ export const Route = createFileRoute("/blog/$slug")({
           <p className="text-muted-foreground mb-8">Il a peut-être été déplacé ou supprimé.</p>
           <Link
             to="/blog"
-            className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3 text-sm font-medium shadow-soft hover:shadow-premium transition-all"
+            className="inline-flex items-center gap-2 rounded-full bg-emerald text-white px-6 py-3 text-sm font-medium shadow-soft hover:shadow-card transition-all"
           >
             <ArrowLeft className="h-4 w-4" />
             Tous les articles
@@ -122,8 +122,7 @@ function BlogPostPage() {
       <main>
         {/* Hero article */}
         <article>
-          <header className="relative pt-16 pb-12 lg:pt-20 lg:pb-16 border-b border-border/60 overflow-hidden">
-            <div className="absolute inset-0 bg-noise opacity-[0.04] pointer-events-none" />
+          <header className="page-hero relative pt-16 pb-12 lg:pt-20 lg:pb-16">
             <div className="mx-auto max-w-4xl px-5 lg:px-8 relative">
               <Reveal>
                 <Link
@@ -154,7 +153,7 @@ function BlogPostPage() {
               </Reveal>
 
               <Reveal delay={140}>
-                <h1 className="font-display text-[clamp(2.25rem,5.5vw,4rem)] tracking-[-0.025em] leading-[1.08] text-balance">
+                <h1 className="page-title">
                   {post.title}
                 </h1>
               </Reveal>
@@ -177,7 +176,7 @@ function BlogPostPage() {
           {post.featuredMedia && (
             <Reveal>
               <div className="mx-auto max-w-6xl px-0 lg:px-8 -mt-2 mb-12 lg:mb-20">
-                <div className="relative aspect-[16/9] lg:aspect-[2.2/1] overflow-hidden lg:rounded-3xl border-y lg:border border-border/60 bg-cream shadow-premium">
+                <div className="relative aspect-[16/9] lg:aspect-[2.2/1] overflow-hidden lg:rounded-2xl border-y lg:border border-border/60 bg-muted shadow-card">
                   <img
                     src={post.featuredMedia.url}
                     alt={post.featuredMedia.alt || post.title}
@@ -227,13 +226,9 @@ function BlogPostPage() {
           <Reveal>
             <div className="mx-auto max-w-4xl px-5 lg:px-8 pb-16 lg:pb-24">
               <div
-                className="relative overflow-hidden rounded-2xl border border-emerald/20 ring-frame shadow-soft p-8 lg:p-10 grid md:grid-cols-[1fr_auto] items-center gap-6"
-                style={{
-                  background:
-                    "linear-gradient(135deg, color-mix(in oklab, var(--emerald) 12%, transparent), color-mix(in oklab, var(--navy) 4%, transparent))",
-                }}
+                className="relative overflow-hidden rounded-2xl border border-border/70 bg-surface shadow-card p-8 lg:p-10 grid md:grid-cols-[1fr_auto] items-center gap-6"
               >
-                <div className="absolute inset-0 bg-noise opacity-[0.06] pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-hero opacity-70 pointer-events-none" />
                 <div className="relative">
                   <p className="eyebrow">Cet article vous a aidé ?</p>
                   <h3 className="mt-3 font-display text-2xl lg:text-3xl tracking-[-0.015em] leading-tight">
@@ -247,7 +242,7 @@ function BlogPostPage() {
                   <Link
                     to="/"
                     hash="devis"
-                    className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3.5 text-sm font-semibold shadow-elev hover:shadow-premium hover:-translate-y-0.5 transition-all"
+                    className="inline-flex items-center gap-2 rounded-full bg-emerald text-white px-6 py-3.5 text-sm font-semibold shadow-elev hover:shadow-card hover:-translate-y-0.5 transition-all"
                   >
                     Devis gratuit
                     <ArrowRight className="h-4 w-4" />

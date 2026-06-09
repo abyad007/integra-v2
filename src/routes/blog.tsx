@@ -119,15 +119,14 @@ function BlogIndexPage() {
         {/* ════════════ HERO ════════════ */}
         <section
           ref={heroRef}
-          className="relative pt-16 pb-12 lg:pt-24 lg:pb-16 overflow-hidden border-b border-border/60"
+          className="page-hero relative pt-16 pb-12 lg:pt-24 lg:pb-16"
         >
           <div
             ref={heroBgRef}
-            className="absolute inset-0 pointer-events-none [mask-image:radial-gradient(ellipse_60%_55%_at_50%_25%,black,transparent)] will-change-transform"
+            className="absolute inset-0 pointer-events-none [mask-image:radial-gradient(ellipse_70%_60%_at_50%_30%,black,transparent)] will-change-transform"
           >
-            <div className="absolute inset-0 bg-grid opacity-[0.18]" />
+            <div className="absolute inset-0 bg-grid opacity-[0.15]" />
           </div>
-          <div className="absolute inset-0 bg-noise opacity-[0.04] pointer-events-none" />
 
           <div className="mx-auto max-w-7xl px-5 lg:px-8 relative">
             <Reveal>
@@ -149,7 +148,7 @@ function BlogIndexPage() {
                   </div>
                 </Reveal>
                 <Reveal delay={120}>
-                  <h1 className="font-display text-[clamp(2.5rem,6vw,4.5rem)] tracking-[-0.03em] leading-[1.05] text-balance">
+                  <h1 className="page-title">
                     Guides, décryptages
                     <br />
                     <span className="text-gradient-emerald">& bonnes pratiques.</span>
@@ -233,7 +232,7 @@ function BlogIndexPage() {
                     setActiveCat(null);
                     setQuery("");
                   }}
-                  className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium hover:shadow-premium transition-all"
+                  className="mt-6 inline-flex items-center gap-2 rounded-full bg-emerald text-white px-5 py-2.5 text-sm font-medium hover:shadow-card transition-all"
                 >
                   Réinitialiser les filtres
                 </button>
@@ -324,13 +323,9 @@ function FeaturedCardWrapper({ post }: { post: WpPost }) {
 function InlineCta() {
   return (
     <aside
-      className="my-10 lg:my-14 relative overflow-hidden rounded-2xl border border-emerald/20 ring-frame shadow-soft"
-      style={{
-        background:
-          "linear-gradient(135deg, color-mix(in oklab, var(--emerald) 14%, transparent), color-mix(in oklab, var(--navy) 4%, transparent))",
-      }}
+      className="my-10 lg:my-14 relative overflow-hidden rounded-2xl border border-border/70 bg-surface shadow-card"
     >
-      <div className="absolute inset-0 bg-noise opacity-[0.06] pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-hero opacity-80 pointer-events-none" />
       <div className="relative grid md:grid-cols-[1fr_auto] items-center gap-6 p-6 sm:p-8 lg:p-10">
         <div>
           <p className="eyebrow">Besoin d'un devis ?</p>
@@ -346,7 +341,7 @@ function InlineCta() {
           <Link
             to="/"
             hash="devis"
-            className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3.5 text-sm font-semibold shadow-elev hover:shadow-premium hover:-translate-y-0.5 transition-all"
+            className="inline-flex items-center gap-2 rounded-full bg-emerald text-white px-6 py-3.5 text-sm font-semibold shadow-elev hover:shadow-card hover:-translate-y-0.5 transition-all"
           >
             Devis gratuit
             <ArrowRight className="h-4 w-4" />

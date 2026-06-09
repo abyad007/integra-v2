@@ -102,8 +102,8 @@ export function MethodPinned() {
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
             {/* Left: section header + progress */}
             <div className="lg:col-span-5">
-              <p className="eyebrow">03 — Notre méthode</p>
-              <h2 className="mt-4 font-display text-[clamp(2.25rem,4.6vw,3.75rem)] leading-[1.05] text-balance">
+              <p className="eyebrow">Notre méthode</p>
+              <h2 className="mt-4 font-display font-medium text-[clamp(2.25rem,4.6vw,3.5rem)] leading-[1.06] text-balance tracking-[-0.03em]">
                 Votre assurance <span className="text-gradient-emerald">en 4 étapes.</span>
               </h2>
               <p className="mt-5 text-muted-foreground inline-flex items-center gap-2 text-sm">
@@ -164,7 +164,7 @@ export function MethodPinned() {
                     <article
                       key={s.n}
                       aria-hidden={!isActive}
-                      className="absolute inset-0 rounded-3xl border border-border bg-surface shadow-elev overflow-hidden transition-all duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+                      className="absolute inset-0 rounded-2xl border border-border/70 bg-surface shadow-card overflow-hidden transition-all duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
                       style={{
                         opacity: isActive ? 1 : 0,
                         transform: isActive
@@ -259,7 +259,7 @@ export function MethodPinned() {
                         decoding="async"
                         className="absolute inset-0 w-full h-full object-contain p-3"
                       />
-                      <span className="absolute top-3 right-3 inline-flex items-center gap-1 rounded-full bg-surface/95 backdrop-blur text-emerald px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider border border-emerald/15 shadow-soft">
+                      <span className="absolute top-3 right-3 inline-flex items-center gap-1 rounded-full bg-surface text-emerald px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider border border-emerald/15 shadow-soft">
                         <Clock className="h-2.5 w-2.5" />
                         {s.time}
                       </span>

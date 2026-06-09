@@ -21,7 +21,7 @@ integra-assurance.com  → Site React V2 statique (Hostinger shared, ce projet)
 
 - Domaine `integra-assurance.com` ajouté à ton compte Hostinger (ou alias)
 - Accès FTP/SFTP à `public_html/integra-assurance.com/` (ou la racine selon ton plan)
-- Compte [Resend](https://resend.com) (gratuit, 100 emails/jour) pour les emails de leads
+- Boîte email Hostinger (`devis@integra-assurance.com`) pour l'envoi SMTP des leads
 - Node.js 20+ installé localement pour les builds
 
 ---
@@ -42,14 +42,11 @@ Le dossier `dist-static/` est créé avec :
 - `api/submit-lead.php` + `api/.htaccess`
 - `.htaccess` racine (HTTPS + SPA fallback + cache + sécurité)
 
-### 2. Configurer Resend (5 min)
+### 2. Configurer l'email SMTP Hostinger (5 min)
 
-1. Crée un compte sur [resend.com](https://resend.com)
-2. Va dans **Domains → Add Domain**, ajoute `integra-assurance.com`
-3. Suis les instructions pour ajouter les DNS records (TXT + MX) dans Hostinger → DNS Zone
-4. Attends la vérification (~5 min)
-5. Va dans **API Keys → Create API Key**, donne-lui un nom "Integra production", scope `Sending access`
-6. **Copie la clé `re_xxxxxxxxxxxx`** — elle ne s'affiche qu'une fois
+1. hPanel → **Emails → Email Accounts → Create**
+2. Crée `devis@integra-assurance.com` avec un mot de passe fort
+3. Note les paramètres SMTP : `smtp.hostinger.com`, port `465` (SSL)
 
 ### 3. Uploader sur Hostinger
 
@@ -77,8 +74,11 @@ Une fois les fichiers uploadés, crée le fichier `.env` côté serveur :
 3. Contenu :
 
 ```bash
-RESEND_API_KEY=re_xxxxxxxxxxxx
-RESEND_FROM_EMAIL=Integra Assurance <devis@integra-assurance.com>
+SMTP_HOST=smtp.hostinger.com
+SMTP_PORT=465
+SMTP_USER=devis@integra-assurance.com
+SMTP_PASS=<mot de passe de la boîte email>
+SMTP_FROM_NAME=Integra Assurance
 LEAD_NOTIFICATION_EMAIL=integra.cc@outlook.com
 ```
 
@@ -107,7 +107,7 @@ Test du formulaire de devis :
    - Notification à `integra.cc@outlook.com`
    - Confirmation à l'adresse email saisie
 
-Si pas reçus : check `public_html/integra-assurance.com/api/leads.log` (le PHP loggue tout lead reçu, même si Resend a échoué).
+Si pas reçus : check `public_html/integra-assurance.com/api/leads.log` (le PHP loggue tout lead reçu, même si l'envoi SMTP a échoué).
 
 ---
 
@@ -121,7 +121,7 @@ npm run build:static
 
 # 2. Re-upload dist-static/ vers Hostinger
 #    (File Manager ou FTP — n'écrase QUE les fichiers du site,
-#     NE PAS toucher à api/.env qui contient ta Resend key)
+#     NE PAS toucher à api/.env qui contient tes identifiants SMTP)
 ```
 
 **Automatisation** (optionnel) — pour rebuild auto quand WP publie :
@@ -163,7 +163,7 @@ public_html/integra-assurance.com/
 └── api/
     ├── submit-lead.php        # Endpoint PHP de capture lead
     ├── .htaccess              # Protège .env et leads.log
-    ├── .env                   # Resend API key (À CRÉER sur le serveur)
+    ├── .env                   # Identifiants SMTP (À CRÉER sur le serveur)
     └── leads.log              # Audit trail créé automatiquement
 ```
 
@@ -175,7 +175,7 @@ public_html/integra-assurance.com/
 - Check les DevTools du navigateur → onglet Network → request `submit-lead.php`
 - Si HTTP 403 : `.htaccess` du dossier `api/` mal uploadé, ré-upload
 - Si HTTP 500 : check le fichier `error_log` dans hPanel pour voir l'erreur PHP
-- Si HTTP 200 mais pas d'email : Resend API key invalide, ou domaine pas vérifié, ou tu as dépassé les 100 emails/jour du free tier
+- Si HTTP 200 mais pas d'email : identifiants SMTP invalides, ou boîte email `devis@` pas créée dans hPanel
 
 ### Les URLs blog/article-xxx donnent 404
 - Vérifie que `.htaccess` est bien uploadé à la racine
@@ -199,7 +199,7 @@ public_html/integra-assurance.com/
 - [ ] `api/.htaccess` uploadé et actif
 - [ ] HTTPS forcé via `.htaccess` racine (déjà inclus)
 - [ ] Headers de sécurité actifs (X-Frame-Options, HSTS, etc. — déjà inclus)
-- [ ] Resend API key régénérée si elle a transité par un canal non-sécurisé
+- [ ] Mot de passe SMTP régénéré si transité par un canal non-sécurisé
 - [ ] CORS de `submit-lead.php` restreint à `integra-assurance.com` (vérifie la liste `$ALLOWED_ORIGINS`)
 - [ ] Sitemap soumis à Google Search Console (https://search.google.com/search-console)
 - [ ] Test du formulaire de bout en bout en prod après chaque déploiement
@@ -217,7 +217,10 @@ VITE_PLAUSIBLE_DOMAIN=integra-assurance.com    # Optionnel
 
 ### Runtime serveur Hostinger (`public_html/integra-assurance.com/api/.env`)
 ```bash
-RESEND_API_KEY=re_xxxxxxxxxxxx
-RESEND_FROM_EMAIL=Integra Assurance <devis@integra-assurance.com>
+SMTP_HOST=smtp.hostinger.com
+SMTP_PORT=465
+SMTP_USER=devis@integra-assurance.com
+SMTP_PASS=<mot de passe de la boîte email>
+SMTP_FROM_NAME=Integra Assurance
 LEAD_NOTIFICATION_EMAIL=integra.cc@outlook.com
 ```

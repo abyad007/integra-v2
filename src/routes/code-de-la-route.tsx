@@ -90,7 +90,7 @@ function QuizPage() {
                 <GraduationCap className="h-3.5 w-3.5" />
                 Quiz interactif · gratuit
               </div>
-              <h1 className="font-display text-[clamp(2.25rem,5vw,3.75rem)] tracking-[-0.03em] leading-[1.05] text-balance">
+              <h1 className="page-title">
                 Êtes-vous incollable sur <span className="text-gradient-emerald">la route ?</span>
               </h1>
               <p className="mt-5 text-muted-foreground text-base sm:text-lg leading-relaxed max-w-lg mx-auto">
@@ -99,7 +99,7 @@ function QuizPage() {
             </div>
           </Reveal>
 
-          <div className="bg-surface border border-border rounded-[2rem] p-6 sm:p-10 shadow-soft relative overflow-hidden min-h-[420px] flex flex-col">
+          <div className="bg-surface border border-border rounded-2xl p-6 sm:p-10 shadow-card relative overflow-hidden min-h-[420px] flex flex-col">
             <AnimatePresence mode="wait">
               {showResult ? (
                 <motion.div key="result" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="flex-1 flex flex-col items-center justify-center text-center">
@@ -114,7 +114,7 @@ function QuizPage() {
                       <RotateCcw className="h-4 w-4" /> Recommencer
                     </button>
                     <QuoteFunnel defaultType="auto">
-                      <button className="inline-flex items-center justify-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3.5 text-sm font-medium shadow-elev hover:shadow-premium hover:-translate-y-0.5 transition-all">
+                      <button className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald text-white px-6 py-3.5 text-sm font-medium shadow-elev hover:shadow-card hover:-translate-y-0.5 transition-all">
                         Obtenir mon tarif Jeune Conducteur <ArrowRight className="h-4 w-4" />
                       </button>
                     </QuoteFunnel>

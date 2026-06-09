@@ -7,9 +7,8 @@ import * as z from "zod";
  * Behaviour:
  *  1. Validates payload with Zod
  *  2. ALWAYS logs to server console (so leads are never silently dropped)
- *  3. If process.env.RESEND_API_KEY is set → sends 2 emails via Resend:
- *       - confirmation to the lead
- *       - notification to LEAD_NOTIFICATION_EMAIL (or default integra.cc@outlook.com)
+ *  3. If process.env.RESEND_API_KEY is set (dev SSR only) → sends 2 emails via Resend API.
+ *     Production uses /api/submit-lead.php (SMTP Hostinger) — see DEPLOY.md.
  *  4. If process.env.LEAD_WEBHOOK_URL is set → POSTs the lead to that URL
  *       (use for Make / Zapier / n8n / Slack / Discord / your CRM)
  *  5. Stores in in-memory ring (last 100) so the /admin page can display recent leads

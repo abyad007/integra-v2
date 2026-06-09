@@ -72,7 +72,7 @@ export function CookieBanner() {
                   animate={{ y: 0, opacity: 1, scale: 1 }}
                   exit={{ y: 12, opacity: 0, scale: 0.98 }}
                   transition={{ type: "spring", stiffness: 280, damping: 28 }}
-                  className="bg-surface rounded-2xl border border-border shadow-premium w-full max-w-lg overflow-hidden"
+                  className="bg-surface rounded-2xl border border-border shadow-card w-full max-w-lg overflow-hidden"
                   onClick={(e) => e.stopPropagation()}
                   role="dialog"
                   aria-labelledby="cookie-customize-title"
@@ -153,7 +153,7 @@ export function CookieBanner() {
                     </button>
                     <button
                       onClick={handleAcceptAll}
-                      className="flex-1 min-w-[120px] rounded-full bg-primary text-primary-foreground px-4 py-2.5 text-xs font-semibold shadow-soft hover:shadow-elev transition-all"
+                      className="flex-1 min-w-[120px] rounded-full bg-emerald text-white px-4 py-2.5 text-xs font-semibold shadow-soft hover:shadow-elev transition-all"
                     >
                       Tout accepter
                     </button>
@@ -173,7 +173,7 @@ export function CookieBanner() {
             role="region"
             aria-label="Bandeau de gestion des cookies"
           >
-            <div className="bg-surface/95 backdrop-blur-xl border border-border shadow-premium rounded-2xl p-5 relative overflow-hidden">
+            <div className="bg-surface border border-border shadow-card rounded-2xl p-5 relative overflow-hidden">
               <div className="absolute inset-0 bg-noise opacity-10 pointer-events-none" />
               <div className="flex gap-4 relative z-10">
                 <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-emerald/10 text-emerald">
@@ -204,7 +204,7 @@ export function CookieBanner() {
                     </button>
                     <button
                       onClick={handleAcceptAll}
-                      className="flex-1 min-w-[100px] rounded-full bg-primary text-primary-foreground px-3 py-2 text-[11.5px] font-semibold shadow-soft hover:shadow-elev transition-all"
+                      className="flex-1 min-w-[100px] rounded-full bg-emerald text-white px-3 py-2 text-[11.5px] font-semibold shadow-soft hover:shadow-elev transition-all"
                     >
                       Tout accepter
                     </button>

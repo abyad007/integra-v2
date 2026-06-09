@@ -38,7 +38,7 @@ function NotFoundComponent() {
           </p>
           <Link
             to="/"
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground shadow-soft hover:shadow-premium hover:-translate-y-0.5 transition-all"
+            className="inline-flex items-center gap-2 rounded-full bg-emerald text-white px-7 py-3.5 text-sm font-medium text-primary-foreground shadow-soft hover:shadow-card hover:-translate-y-0.5 transition-all"
           >
             Retour à l'accueil
             <ArrowRight className="h-4 w-4" />
@@ -67,7 +67,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
             Un problème technique est survenu. Notre équipe a été notifiée.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            <button onClick={() => { router.invalidate(); reset(); }} className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-soft hover:shadow-premium transition-all">
+            <button onClick={() => { router.invalidate(); reset(); }} className="inline-flex items-center gap-2 rounded-full bg-emerald text-white px-6 py-3 text-sm font-medium text-primary-foreground shadow-soft hover:shadow-card transition-all">
               Réessayer
             </button>
             <Link to="/" className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-6 py-3 text-sm font-medium hover:bg-accent transition-all">

@@ -37,7 +37,7 @@ function PrivacyPolicyPage() {
               <Lock className="h-3.5 w-3.5" />
               Protection des données · RGPD
             </div>
-            <h1 className="font-display text-[clamp(2.5rem,6vw,4.5rem)] tracking-[-0.03em] leading-[1.05] mb-6 text-balance">
+            <h1 className="page-title mb-6">
               Politique de <span className="text-gradient-emerald">Confidentialité.</span>
             </h1>
             <p className="text-muted-foreground text-base sm:text-lg leading-relaxed mb-10">

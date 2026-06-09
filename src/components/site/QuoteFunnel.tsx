@@ -136,7 +136,7 @@ export function QuoteFunnel({ children, defaultType = "auto" }: Props) {
               aria-hidden="true"
             />
             <motion.div
-              className="relative w-full sm:max-w-lg rounded-3xl border border-border bg-background shadow-elev overflow-hidden"
+              className="relative w-full sm:max-w-lg rounded-2xl border border-border bg-surface shadow-card overflow-hidden"
               initial={{ opacity: 0, y: 24, scale: 0.985 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 16, scale: 0.99 }}
@@ -161,7 +161,7 @@ export function QuoteFunnel({ children, defaultType = "auto" }: Props) {
                   </p>
                   <a
                     href="tel:+33187663942"
-                    className="mt-7 inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3 text-sm font-medium shadow-soft hover:shadow-premium transition-all"
+                    className="mt-7 inline-flex items-center gap-2 rounded-full bg-emerald text-white px-6 py-3 text-sm font-medium shadow-soft hover:shadow-card transition-all"
                   >
                     <Phone className="h-4 w-4" />
                     Appeler maintenant
@@ -297,7 +297,7 @@ export function QuoteFunnel({ children, defaultType = "auto" }: Props) {
                       <button
                         onClick={next}
                         disabled={!canNext}
-                        className="inline-flex items-center gap-1.5 rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium shadow-soft hover:shadow-premium disabled:opacity-40 disabled:pointer-events-none transition-all hover:-translate-y-0.5"
+                        className="inline-flex items-center gap-1.5 rounded-full bg-emerald text-white px-5 py-2.5 text-sm font-medium shadow-soft hover:shadow-card disabled:opacity-40 disabled:pointer-events-none transition-all hover:-translate-y-0.5"
                       >
                         Continuer
                         <ArrowRight className="h-3.5 w-3.5" />
@@ -306,7 +306,7 @@ export function QuoteFunnel({ children, defaultType = "auto" }: Props) {
                       <button
                         onClick={submit}
                         disabled={submitting}
-                        className="inline-flex items-center gap-1.5 rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium shadow-soft hover:shadow-premium transition-all hover:-translate-y-0.5 disabled:opacity-60 disabled:pointer-events-none"
+                        className="inline-flex items-center gap-1.5 rounded-full bg-emerald text-white px-5 py-2.5 text-sm font-medium shadow-soft hover:shadow-card transition-all hover:-translate-y-0.5 disabled:opacity-60 disabled:pointer-events-none"
                       >
                         {submitting ? (
                           <>
