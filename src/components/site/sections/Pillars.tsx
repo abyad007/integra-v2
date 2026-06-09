@@ -35,8 +35,8 @@ export function Pillars() {
 
       <div className="mx-auto max-w-7xl px-5 lg:px-8 relative">
         <Reveal className="max-w-2xl">
-          <p className="eyebrow">04 — Nos engagements</p>
-          <h2 className="mt-4 font-display text-[clamp(2.25rem,5vw,4rem)] leading-[1.04] text-balance tracking-[-0.03em]">
+          <p className="eyebrow">Nos engagements</p>
+          <h2 className="mt-4 font-display text-[clamp(2.25rem,5vw,3.75rem)] leading-[1.08] text-balance tracking-[-0.03em] font-medium">
             Trois principes
             <br />
             <span className="text-gradient-emerald">non négociables.</span>
@@ -52,7 +52,7 @@ export function Pillars() {
             const Icon = p.icon;
             return (
               <Reveal key={p.n} delay={60 + i * 50}>
-                <article className="group relative h-full overflow-hidden rounded-3xl border border-border/70 bg-surface/95 backdrop-blur p-7 lg:p-8 shadow-soft hover:shadow-premium hover:-translate-y-1 hover:border-emerald/40 transition-all duration-500">
+                <article className="group relative h-full overflow-hidden rounded-2xl border border-border/70 bg-surface p-7 lg:p-8 shadow-soft hover:shadow-card hover:-translate-y-0.5 hover:border-emerald/25 transition-all duration-400">
                   <span
                     aria-hidden="true"
                     className="pointer-events-none absolute inset-x-0 -top-px h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500"

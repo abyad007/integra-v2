@@ -46,7 +46,7 @@ export function LogoCloud() {
       <div className="absolute inset-0 bg-noise opacity-50" />
       <div className="mx-auto max-w-7xl px-5 lg:px-8 py-10 lg:py-14 grid lg:grid-cols-12 items-center gap-8 relative">
         <div className="lg:col-span-3 flex lg:flex-col items-center lg:items-start gap-4 lg:gap-3">
-          <span className="font-mono text-[10px] tracking-[0.22em] uppercase text-emerald">— Partenaires</span>
+          <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-emerald">Partenaires</span>
           <div className="flex items-baseline gap-3">
             <span className="font-display text-5xl lg:text-6xl tracking-[-0.04em] leading-none text-foreground tabular-nums">
               40+

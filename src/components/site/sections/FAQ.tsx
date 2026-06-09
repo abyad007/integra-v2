@@ -44,8 +44,8 @@ export function FAQ() {
       <div className="absolute inset-0 bg-noise pointer-events-none opacity-50" />
       <div className="mx-auto max-w-5xl px-5 lg:px-8 relative">
         <Reveal className="max-w-2xl">
-          <p className="eyebrow">07 — FAQ</p>
-          <h2 className="mt-4 font-display text-[clamp(2.25rem,5vw,4rem)] leading-[1.04] text-balance tracking-[-0.03em]">
+          <p className="eyebrow">FAQ</p>
+          <h2 className="mt-4 font-display text-[clamp(2.25rem,5vw,3.75rem)] leading-[1.08] text-balance tracking-[-0.03em] font-medium">
             Vos questions,
             <br />
             <span className="text-gradient-emerald">nos réponses claires.</span>

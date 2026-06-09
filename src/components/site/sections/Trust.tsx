@@ -121,8 +121,8 @@ export function Trust() {
       <div className="mx-auto max-w-7xl px-5 lg:px-8 relative">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-end mb-12 sm:mb-16">
           <Reveal className="lg:col-span-7">
-            <p className="eyebrow">05 — Confiance</p>
-            <h2 className="mt-4 font-display text-[clamp(2.25rem,5vw,4rem)] leading-[1.04] text-balance tracking-[-0.03em]">
+            <p className="eyebrow">Confiance</p>
+            <h2 className="mt-4 font-display text-[clamp(2.25rem,5vw,3.75rem)] leading-[1.08] text-balance tracking-[-0.03em] font-medium">
               Des milliers d'assurés
               <br />
               <span className="text-gradient-emerald">nous font confiance.</span>

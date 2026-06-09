@@ -75,8 +75,8 @@ function ServiceCard({ s, pinned = false }: { s: Service; pinned?: boolean }) {
   return (
     <a
       href={s.href}
-      className={`group relative flex flex-col h-full overflow-hidden rounded-2xl border border-border/70 bg-surface/85 backdrop-blur shadow-soft hover:shadow-premium hover:-translate-y-1 hover:border-emerald/40 transition-all duration-500 card-sheen ${
-        pinned ? "w-[340px] flex-shrink-0" : ""
+      className={`group relative flex flex-col h-full overflow-hidden rounded-2xl border border-border/70 bg-surface shadow-soft hover:shadow-card hover:-translate-y-0.5 hover:border-emerald/30 transition-all duration-400 ${
+        pinned ? "w-[320px] flex-shrink-0" : ""
       }`}
     >
       <span
@@ -203,8 +203,8 @@ export function Services() {
         <div className="mx-auto max-w-7xl px-5 lg:px-8 relative">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-end mb-12 sm:mb-16">
             <Reveal className="lg:col-span-7">
-              <p className="eyebrow">02 — Nos solutions</p>
-              <h2 className="mt-4 font-display text-[clamp(2.25rem,5vw,4rem)] leading-[1.04] text-balance tracking-[-0.03em]">
+              <p className="eyebrow">Nos solutions</p>
+              <h2 className="mt-4 font-display text-[clamp(2.25rem,5vw,3.75rem)] leading-[1.08] text-balance tracking-[-0.03em] font-medium">
                 Une couverture juste,
                 <br />
                 <span className="text-gradient-emerald">pour chaque vie.</span>
@@ -235,7 +235,7 @@ export function Services() {
           <div className="mx-auto max-w-7xl px-8 w-full mb-12 relative">
             <div className="grid grid-cols-12 gap-16 items-end">
               <div className="col-span-7">
-                <p className="eyebrow">02 — Nos solutions</p>
+                <p className="eyebrow">Nos solutions</p>
                 <h2 className="mt-4 font-display text-[clamp(2.5rem,4vw,3.75rem)] leading-[1.04] text-balance tracking-[-0.03em]">
                   Une couverture juste,
                   <br />

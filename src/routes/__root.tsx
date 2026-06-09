@@ -30,7 +30,9 @@ function NotFoundComponent() {
         <div className="absolute inset-0 bg-grid opacity-[0.25] pointer-events-none [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,black,transparent)]" />
         <div className="max-w-md text-center relative z-10">
           <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-emerald mb-4 block">Erreur 404</span>
-          <h1 className="font-display text-6xl sm:text-7xl tracking-tight text-foreground mb-4 leading-none">Page<br/><span className="text-gradient-emerald">introuvable.</span></h1>
+          <h1 className="font-display text-5xl sm:text-6xl tracking-tight text-foreground mb-4 leading-[1.06] font-medium">
+            Page<br /><span className="text-gradient-emerald">introuvable.</span>
+          </h1>
           <p className="text-muted-foreground text-base sm:text-lg mb-8 leading-relaxed">
             Il semble que la page que vous cherchez n'existe plus ou a été déplacée.
           </p>
@@ -84,7 +86,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "theme-color", content: "#0A2C4A" },
+      { name: "theme-color", content: "#0B1623" },
       { title: "Integra CC — Courtier en assurance" },
       { name: "description", content: "Integra CC : Courtier en assurance indépendant pour auto, moto, habitation, santé. Devis gratuit en 2 minutes." },
       { name: "author", content: "Integra CC" },
@@ -111,7 +113,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&display=swap",
       },
       {
         rel: "stylesheet",
